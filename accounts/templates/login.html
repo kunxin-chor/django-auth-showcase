@@ -7,23 +7,11 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Login</h1>
-    {% if request.user.username %}
-    Logged In As:{{request.user.username}}
-    {% endif %}
-    
-    <hr> {% if messages %}
-    <div>
-        {% for message in messages %} {{ message }} {% endfor %}
-    </div>
-    {% endif %}
-    
-    <ul>
-        <li <a href="{% url 'login' %}">Login</li>
-        <li>Register</li>
-        <li>Profile</li>
-        <li><a href="{% url 'logout' %}">Logout</a></li>
-        
-    </ul>
+    <h1>User Login</h1>
+    {% csrf_token %}
+    <form method='POST'>
+    {{ form.as_p }}
+    <input type="submit">
+    </form>
 </body>
 </html>
