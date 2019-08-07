@@ -25,6 +25,7 @@ def login(request):
             if user:
                 # log in the user
                 auth.login(user=user, request=request)
+                return redirect(reverse('index'))
             else:
                 login_form.add_error('None', "Invalid username or password")
     else:

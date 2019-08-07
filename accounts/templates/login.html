@@ -8,10 +8,17 @@
 </head>
 <body>
     <h1>User Login</h1>
-    {% csrf_token %}
+   
     <form method='POST'>
-    {{ form.as_p }}
-    <input type="submit">
+         {% csrf_token %}
+         {{ form.as_p }}
+         <input type="submit">
     </form>
+    
+      <hr> {% if messages %}
+    <div>
+        {% for message in messages %} {{ message }} {% endfor %}
+    </div>
+    {% endif %}
 </body>
 </html>
