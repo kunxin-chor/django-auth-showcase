@@ -8,6 +8,9 @@
 </head>
 <body>
     <h1>Hello!</h1>
+    {% if request.user.username %}
+    Logged In As:{{request.user.username}}
+    {% endif %}
     
     <hr> {% if messages %}
     <div>
