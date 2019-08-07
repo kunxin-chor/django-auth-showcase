@@ -8,6 +8,13 @@
 </head>
 <body>
     <h1>Hello!</h1>
+    
+    <hr> {% if messages %}
+    <div>
+        {% for message in messages %} {{ message }} {% endfor %}
+    </div>
+    {% endif %}
+    
     <ul>
         <li>Login</li>
         <li>Register</li>

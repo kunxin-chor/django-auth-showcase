@@ -19,6 +19,6 @@ from accounts.views import index, logout
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index),
+    path('', index, name='index'),
     path('logout/', logout, name='logout')
 ]
