@@ -40,7 +40,17 @@ def profile(request):
     return HttpResponse("Profile")
 
 def register(request):
-    form = UserRegistrationForm()
-    return render(request, 'register.html', {
-        'form':form
-    })
+    if request.method == 'POST':
+        form = UserRegistrationForm(request.POST)
+        if form.is_valid():
+            pass
+        else:
+            return render(request, 'register.html', {
+                'form':form
+            })
+    else:
+        form = UserRegistrationForm()
+        return render(request, 'register.html', {
+            'form':form
+        })
+    
