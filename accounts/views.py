@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, reverse, HttpResponse
 from django.contrib import auth, messages
+from django.contrib.auth.models import User
 from .forms import UserLoginForm, UserRegistrationForm
 from django.contrib.auth.decorators import login_required
 
@@ -37,7 +38,10 @@ def login(request):
         
 @login_required        
 def profile(request):
-    return HttpResponse("Profile")
+    user = User.objects.get(email=request.user.email)
+    return render(request, 'profile.html', {
+        'user' : user
+    })
 
 def register(request):
     if request.method == 'POST':
@@ -66,4 +70,6 @@ def register(request):
         return render(request, 'register.html', {
             'form':form
         })
+    
+
     
